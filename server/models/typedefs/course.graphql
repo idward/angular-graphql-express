@@ -1,0 +1,28 @@
+type Course {
+  id: ID!
+  title: String!
+  author: String!
+  description: String!
+  topic: String!
+  url: String
+  voteCount: Int
+}
+
+type AddCourseInput {
+  title: String!
+  author: String!
+  description: String!
+  topic: String!
+  url: String
+}
+
+type Query {
+  allCourses(searchKey: string): [Course!]!
+  getCourse(id: ID!): Course!
+}
+
+type Mutation {
+  addCourse(data: AddCourseInput): Course!
+  upvote(id: ID!): Course!
+  downvote(id: ID!): Course!
+}
