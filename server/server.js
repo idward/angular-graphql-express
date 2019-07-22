@@ -1,7 +1,7 @@
 import express from 'express';
-import { ApolloServer, gql } from "apollo-server-express"
+import { ApolloServer, gql } from 'apollo-server-express';
 
-const app = express()
+const app = express();
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
@@ -12,15 +12,15 @@ const typeDefs = gql`
 
 // Provide resolver functions for your schema fields
 const resolvers = {
-    Query: {
-        hello: () => 'Hello world!',
-    },
+  Query: {
+    hello: () => 'Hello world!'
+  }
 };
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers })
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
-apolloServer.applyMiddleware({ app })
+apolloServer.applyMiddleware({ app });
 
 app.listen(4000, () => {
-    console.log('Server is listening on port 4000');
-})
+  console.log('Server is listening on port 4000');
+});
