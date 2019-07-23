@@ -1,0 +1,455 @@
+# source: http://localhost:4466
+# timestamp: Tue Jul 23 2019 10:58:24 GMT+0800 (China Standard Time)
+
+type AggregateCourse {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Course implements Node {
+  id: ID!
+  title: String!
+  author: String!
+  description: String!
+  topic: String!
+  url: String
+  voteCount: Int
+}
+
+"""A connection to a list of items."""
+type CourseConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CourseEdge]!
+  aggregate: AggregateCourse!
+}
+
+input CourseCreateInput {
+  id: ID
+  title: String!
+  author: String!
+  description: String!
+  topic: String!
+  url: String
+  voteCount: Int
+}
+
+"""An edge in a connection."""
+type CourseEdge {
+  """The item at the end of the edge."""
+  node: Course!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CourseOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  author_ASC
+  author_DESC
+  description_ASC
+  description_DESC
+  topic_ASC
+  topic_DESC
+  url_ASC
+  url_DESC
+  voteCount_ASC
+  voteCount_DESC
+}
+
+type CoursePreviousValues {
+  id: ID!
+  title: String!
+  author: String!
+  description: String!
+  topic: String!
+  url: String
+  voteCount: Int
+}
+
+type CourseSubscriptionPayload {
+  mutation: MutationType!
+  node: Course
+  updatedFields: [String!]
+  previousValues: CoursePreviousValues
+}
+
+input CourseSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CourseSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CourseWhereInput
+}
+
+input CourseUpdateInput {
+  title: String
+  author: String
+  description: String
+  topic: String
+  url: String
+  voteCount: Int
+}
+
+input CourseUpdateManyMutationInput {
+  title: String
+  author: String
+  description: String
+  topic: String
+  url: String
+  voteCount: Int
+}
+
+input CourseWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CourseWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  author: String
+
+  """All values that are not equal to given value."""
+  author_not: String
+
+  """All values that are contained in given list."""
+  author_in: [String!]
+
+  """All values that are not contained in given list."""
+  author_not_in: [String!]
+
+  """All values less than the given value."""
+  author_lt: String
+
+  """All values less than or equal the given value."""
+  author_lte: String
+
+  """All values greater than the given value."""
+  author_gt: String
+
+  """All values greater than or equal the given value."""
+  author_gte: String
+
+  """All values containing the given string."""
+  author_contains: String
+
+  """All values not containing the given string."""
+  author_not_contains: String
+
+  """All values starting with the given string."""
+  author_starts_with: String
+
+  """All values not starting with the given string."""
+  author_not_starts_with: String
+
+  """All values ending with the given string."""
+  author_ends_with: String
+
+  """All values not ending with the given string."""
+  author_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  topic: String
+
+  """All values that are not equal to given value."""
+  topic_not: String
+
+  """All values that are contained in given list."""
+  topic_in: [String!]
+
+  """All values that are not contained in given list."""
+  topic_not_in: [String!]
+
+  """All values less than the given value."""
+  topic_lt: String
+
+  """All values less than or equal the given value."""
+  topic_lte: String
+
+  """All values greater than the given value."""
+  topic_gt: String
+
+  """All values greater than or equal the given value."""
+  topic_gte: String
+
+  """All values containing the given string."""
+  topic_contains: String
+
+  """All values not containing the given string."""
+  topic_not_contains: String
+
+  """All values starting with the given string."""
+  topic_starts_with: String
+
+  """All values not starting with the given string."""
+  topic_not_starts_with: String
+
+  """All values ending with the given string."""
+  topic_ends_with: String
+
+  """All values not ending with the given string."""
+  topic_not_ends_with: String
+  url: String
+
+  """All values that are not equal to given value."""
+  url_not: String
+
+  """All values that are contained in given list."""
+  url_in: [String!]
+
+  """All values that are not contained in given list."""
+  url_not_in: [String!]
+
+  """All values less than the given value."""
+  url_lt: String
+
+  """All values less than or equal the given value."""
+  url_lte: String
+
+  """All values greater than the given value."""
+  url_gt: String
+
+  """All values greater than or equal the given value."""
+  url_gte: String
+
+  """All values containing the given string."""
+  url_contains: String
+
+  """All values not containing the given string."""
+  url_not_contains: String
+
+  """All values starting with the given string."""
+  url_starts_with: String
+
+  """All values not starting with the given string."""
+  url_not_starts_with: String
+
+  """All values ending with the given string."""
+  url_ends_with: String
+
+  """All values not ending with the given string."""
+  url_not_ends_with: String
+  voteCount: Int
+
+  """All values that are not equal to given value."""
+  voteCount_not: Int
+
+  """All values that are contained in given list."""
+  voteCount_in: [Int!]
+
+  """All values that are not contained in given list."""
+  voteCount_not_in: [Int!]
+
+  """All values less than the given value."""
+  voteCount_lt: Int
+
+  """All values less than or equal the given value."""
+  voteCount_lte: Int
+
+  """All values greater than the given value."""
+  voteCount_gt: Int
+
+  """All values greater than or equal the given value."""
+  voteCount_gte: Int
+}
+
+input CourseWhereUniqueInput {
+  id: ID
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createCourse(data: CourseCreateInput!): Course!
+  updateCourse(data: CourseUpdateInput!, where: CourseWhereUniqueInput!): Course
+  deleteCourse(where: CourseWhereUniqueInput!): Course
+  upsertCourse(where: CourseWhereUniqueInput!, create: CourseCreateInput!, update: CourseUpdateInput!): Course!
+  updateManyCourses(data: CourseUpdateManyMutationInput!, where: CourseWhereInput): BatchPayload!
+  deleteManyCourses(where: CourseWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  courses(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Course]!
+  course(where: CourseWhereUniqueInput!): Course
+  coursesConnection(where: CourseWhereInput, orderBy: CourseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CourseConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  course(where: CourseSubscriptionWhereInput): CourseSubscriptionPayload
+}

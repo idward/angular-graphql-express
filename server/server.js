@@ -1,5 +1,6 @@
 import express from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
+import prisma from './prisma';
 
 const app = express();
 
@@ -17,7 +18,13 @@ const resolvers = {
   }
 };
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context(request) {
+    return { prisma };
+  }
+});
 
 apolloServer.applyMiddleware({ app });
 
