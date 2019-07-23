@@ -17,7 +17,7 @@ type AddCourseInput {
 }
 
 type Query {
-  allCourses(searchKey: string): [Course!]!
+  allCourses(searchKey: String): [Course!]!
   getCourse(id: ID!): Course!
 }
 
