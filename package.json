@@ -34,6 +34,7 @@
     "graphql": "^14.4.2",
     "graphql-cli": "^3.0.12",
     "graphql-tools": "^4.0.5",
+    "merge-graphql-schemas": "^1.6.1",
     "prisma-binding": "^2.3.15"
   }
 }

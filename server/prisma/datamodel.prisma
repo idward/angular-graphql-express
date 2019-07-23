@@ -1,9 +1,9 @@
 type Course {
-  id: ID! @id 
+  id: ID! @id @unique
   title: String!
   author: String!
   description: String!
   topic: String!
   url: String
-  voteCount: Int
+  voteCount: Int @default(value:0)
 }

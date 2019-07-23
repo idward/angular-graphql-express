@@ -22,7 +22,7 @@ type Query {
 }
 
 type Mutation {
-  addCourse(data: AddCourseInput): Course!
+  addCourse(data: AddCourseInput!): Course!
   upvote(id: ID!): Course!
   downvote(id: ID!): Course!
 }
