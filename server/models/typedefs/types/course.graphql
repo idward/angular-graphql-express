@@ -8,7 +8,7 @@ type Course {
   voteCount: Int
 }
 
-type AddCourseInput {
+input AddCourseInput {
   title: String!
   author: String!
   description: String!
